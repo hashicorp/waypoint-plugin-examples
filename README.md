@@ -5,7 +5,7 @@ Example external plugins for Waypoint
 
 Simple build plugin for Golang which runs go build for the source
 
-```
+```javascript
 plugin "golang" {
   type {
     build = true
