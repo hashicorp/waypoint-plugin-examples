@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package deploy;
+
+option go_package = "github.com/hashicorp/waypoint-plugin-examples/filepath/deploy";
+
+message Deployment {
+  string path = 1;
+}
+
