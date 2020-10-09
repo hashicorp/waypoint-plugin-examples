@@ -2,8 +2,6 @@ package deploy
 
 import (
 	"context"
-	"fmt"
-	"time"
 
 	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/waypoint-plugin-sdk/component"
@@ -29,11 +27,10 @@ func (p *Deploy) validateAuth(
 	defer s.Close()
 
 	s.Update("Validate authentication")
-	time.Sleep(3 * time.Second)
 
 	// returning an error from ValidateAuthFunc causes Waypoint
 	// to call AuthFunc
-	return fmt.Errorf("Unable to Authenticate")
+	return nil
 }
 
 func (p *Deploy) authenticate(
@@ -44,5 +41,5 @@ func (p *Deploy) authenticate(
 
 	ui.Output("Describe the manual authentication steps here")
 
-	return &component.AuthResult{Authenticated: false}, nil
+	return &component.AuthResult{Authenticated: true}, nil
 }

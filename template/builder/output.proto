@@ -1,0 +1,10 @@
+
+syntax = "proto3";
+
+package platform;
+
+option go_package = "github.com/hashicorp/waypoint-plugin-examples/template/platform";
+
+message Deployment {
+  string id = 1;
+}

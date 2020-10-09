@@ -1,0 +1,12 @@
+
+syntax = "proto3";
+
+package release;
+
+option go_package = "github.com/hashicorp/waypoint-plugin-examples/template/release";
+
+// You can customise this message to change the fields for
+// the output value from your ReleaseManager
+message Release {
+  string id = 1;
+}
