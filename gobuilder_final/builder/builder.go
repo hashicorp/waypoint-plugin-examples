@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"os/exec"
+	"path"
 
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
@@ -73,5 +75,33 @@ func (b *Builder) build(ctx context.Context, ui terminal.UI) (*Binary, error) {
 	defer u.Close()
 	u.Update("Building application")
 
-	return &Binary{}, nil
+	if b.config.OutputName == "" {
+		b.config.OutputName = "app"
+	}
+
+	if b.config.Source == "" {
+		b.config.Source = "./"
+	}
+
+	c := exec.Command(
+		"go",
+		"build",
+		"-o",
+		b.config.OutputName,
+		b.config.Source,
+	)
+
+	err := c.Run()
+
+	if err != nil {
+		u.Step(terminal.StatusError, "Build failed")
+
+		return nil, err
+	}
+
+	u.Step(terminal.StatusOK, "Application built successfully")
+
+	return &Binary{
+		Location: path.Join(b.config.Source, b.config.OutputName),
+	}, nil
 }

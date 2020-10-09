@@ -3,15 +3,19 @@ Example external plugins for Waypoint
 
 ## [Plugin Template](./template)
 
-You can use this default template as the basis for your new plugin, all the main Waypoint interfaces are implemented in this sample
+This template can be used to scaffold new Waypoint plugins. All the main Waypoint components and interfaces are implemented in this sample.
 
-## [golang](./golang)
+## [Go Builder Plugin](./golang)
 
 Simple build plugin for Golang which runs go build for the source
 
-## [filepath](./filepath)
+## [Filepath Plugin](./filepath)
 
 Plugin which implements Registry, Platform, and ReleaseManager which interacts with the local file system
+
+## [Gobuilder Plugin](./gobuilder_final)
+
+This plugin is the final example code from the plugin development guide in the Waypoint documentation.
 
 ## Running the Sample App
 
