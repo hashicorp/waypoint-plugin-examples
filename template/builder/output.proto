@@ -3,8 +3,8 @@ syntax = "proto3";
 
 package platform;
 
-option go_package = "github.com/hashicorp/waypoint-plugin-examples/template/platform";
+option go_package = "github.com/hashicorp/waypoint-plugin-examples/template/builder";
 
-message Deployment {
-  string id = 1;
+message Binary {
+  string location = 1;
 }

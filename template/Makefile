@@ -16,3 +16,9 @@ build:
 	@echo "Compile Plugin"
 
 	go build -o ./bin/waypoint-plugin-${PLUGIN_NAME} ./main.go 
+
+install:
+	@echo ""
+	@echo "Installing Plugin"
+
+	cp ./bin/waypoint-plugin-${PLUGIN_NAME} $(env HOME)/.config/waypoint/plugins/   

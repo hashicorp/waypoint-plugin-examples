@@ -1,0 +1,10 @@
+
+syntax = "proto3";
+
+package registry;
+
+option go_package = "github.com/hashicorp/waypoint-plugin-examples/gobuilder/registry";
+
+message Artifact {
+  string source = 1;
+}
