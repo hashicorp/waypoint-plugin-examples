@@ -21,4 +21,4 @@ install:
 	@echo ""
 	@echo "Installing Plugin"
 
-	cp ./bin/waypoint-plugin-${PLUGIN_NAME} $(env HOME)/.config/waypoint/plugins/   
+	cp ./bin/waypoint-plugin-${PLUGIN_NAME} ${HOME}/.config/waypoint/plugins/   

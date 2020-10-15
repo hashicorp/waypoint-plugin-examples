@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package builder;
-
-option go_package = "github.com/hashicorp/waypoint-plugin-examples/golang/builder";
-
-message Binary {
-  string path = 1;
-}

@@ -1,29 +1,30 @@
 # waypoint-plugin-examples
 Example external plugins for Waypoint
 
+For a full guide on building plugins with Waypoint please see the
+[Extending Waypoint](https://www.waypointproject.io/docs/extending-waypoint) documentation
+
 ## [Plugin Template](./template)
 
-This template can be used to scaffold new Waypoint plugins. All the main Waypoint components and interfaces are implemented in this sample.
+This template can be used to scaffold new Waypoint plugins. All the main Waypoint components and interfaces are
+implemented in this sample.
 
-## [Go Builder Plugin](./golang)
-
-Simple build plugin for Golang which runs go build for the source
-
-## [Filepath Plugin](./filepath)
-
-Plugin which implements Registry, Platform, and ReleaseManager which interacts with the local file system
-
-## [Gobuilder Plugin](./gobuilder_final)
+## [Go Builder Plugin](./plugins/gobuilder_final)
 
 This plugin is the final example code from the plugin development guide in the Waypoint documentation.
+
+## [Filepath Plugin](./plugins/filepath)
+
+Plugin which implements Registry, Platform, and ReleaseManager which interacts with the local file system
 
 ## Running the Sample App
 
 1. Build the sample plugins
 
-This command will build the plugins and move them to the ./example_app/.waypoint/plugins folder
+This command will build the plugins and move them to the ./plugins/example_app/.waypoint/plugins folder
 
 ```shell
+cd plugins
 make
 
 make -C golang
@@ -41,7 +42,7 @@ cp ./golang/bin/* ./example_app/.waypoint/plugins
 cp ./filepath/bin/* ./example_app/.waypoint/plugins
 ```
 
-The ./example_app folder has a simeple Golang application and the following Waypoint file
+The ./plugins/example_app folder has a simple Golang application and the following Waypoint file
 
 
 ```javascript
@@ -50,7 +51,7 @@ project = "guides"
 app "example" {
 
   build {
-    use "golang" {
+    use "gobuilder" {
       output_name = "server"
       source = "./"
     }
