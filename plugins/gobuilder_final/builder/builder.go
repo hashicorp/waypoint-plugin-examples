@@ -20,12 +20,12 @@ type Builder struct {
 }
 
 // Implement Configurable
-func (b *Builder) Config() interface{} {
-	return &b.config
+func (b *Builder) Config() (interface{}, error) {
+	return &b.config, nil
 }
 
 // Implement ConfigurableNotify
-func (b *Builder) ConfigurableNotify(config interface{}) error {
+func (b *Builder) ConfigSet(config interface{}) error {
 	c, ok := config.(*BuildConfig)
 	if !ok {
 		return fmt.Errorf("Expected type BuildConfig")
