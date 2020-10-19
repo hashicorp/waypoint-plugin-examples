@@ -1,15 +1,17 @@
 PLUGIN_NAME=template
 
+.PHONY: all
+
 all: protos build
 
 protos:
 	@echo ""
 	@echo "Build Protos"
 
-	protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./builder/output.proto
-	protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./registry/output.proto
-	protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./platform/output.proto
-	protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./release/output.proto
+	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./builder/output.proto
+	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./registry/output.proto
+	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./platform/output.proto
+	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./release/output.proto
 
 build:
 	@echo ""
