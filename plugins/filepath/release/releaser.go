@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/deploy"
+	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/platform"
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/utils"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 	"google.golang.org/grpc/codes"
@@ -35,7 +35,7 @@ func (r *Releaser) DestroyFunc() interface{} {
 func (r *Releaser) release(
 	ctx context.Context,
 	ui terminal.UI,
-	artifact *deploy.Deployment,
+	artifact *platform.Deployment,
 ) (*Release, error) {
 
 	st := ui.Status()

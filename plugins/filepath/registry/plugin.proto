@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package registry;
-
-option go_package = "github.com/hashicorp/waypoint-plugin-examples/filepath/registry";
-
-message Artifact {
-  string path = 1;
-}

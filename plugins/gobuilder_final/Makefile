@@ -6,7 +6,7 @@ protos:
 	@echo ""
 	@echo "Build Protos"
 
-	protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./builder/output.proto
+	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./builder/output.proto
 
 build:
 	@echo ""
