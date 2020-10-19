@@ -27,18 +27,30 @@ This command will build the plugins and move them to the ./plugins/example_app/.
 cd plugins
 make
 
-make -C golang
-make[1]: Entering directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/golang'
-go generate
-CGO_ENABLED=0 go build -o ./bin/waypoint-plugin-golang ./*.go
-make[1]: Leaving directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/golang'
+### Build Go Builder Plugin
+make -C gobuilder_final
+make[1]: Entering directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final'
+
+Build Protos
+protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./builder/output.proto
+
+Compile Plugin
+go build -o ./bin/waypoint-plugin-gobuilder ./main.go 
+make[1]: Leaving directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final'
+
+
+### Build Filepath Builder Plugin
 make -C filepath
-make[1]: Entering directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/filepath'
-go generate
-CGO_ENABLED=0 go build -o ./bin/waypoint-plugin-filepath ./*.go
-make[1]: Leaving directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/filepath'
+make[1]: Entering directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/plugins/filepath'
+protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./registry/output.proto
+protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./platform/output.proto
+protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./release/output.proto
+make[1]: Leaving directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/plugins/filepath'
+
+
+### Install Plugins
 mkdir -p ./example_app/.waypoint/plugins
-cp ./golang/bin/* ./example_app/.waypoint/plugins
+cp ./gobuilder_final/bin/* ./example_app/.waypoint/plugins
 cp ./filepath/bin/* ./example_app/.waypoint/plugins
 ```
 
