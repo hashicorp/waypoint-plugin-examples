@@ -45,7 +45,7 @@ fi
 cp -R . $1
 process $1 $2
 
-echo "Created new pluging in $1"
+echo "Created new plugin in $1"
 echo "You can build this plugin by running the following command"
 echo ""
 echo "cd $1 && make"
