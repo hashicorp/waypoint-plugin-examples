@@ -17,8 +17,8 @@ type Platform struct {
 }
 
 // Implement Configurable
-func (p *Platform) Config() interface{} {
-	return &p.config
+func (p *Platform) Config() (interface{}, error) {
+	return &p.config, nil
 }
 
 // Implement ConfigurableNotify
