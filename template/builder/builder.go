@@ -8,7 +8,7 @@ import (
 )
 
 type BuildConfig struct {
-	Directory string "hcl:directory,optional"
+	Directory string `hcl:"directory,optional"`
 }
 
 type Builder struct {

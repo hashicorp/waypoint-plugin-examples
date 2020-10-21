@@ -25,7 +25,7 @@ func (b *Builder) Config() (interface{}, error) {
 }
 
 // Implement ConfigurableNotify
-func (b *Builder) ConfigurableNotify(config interface{}) error {
+func (b *Builder) ConfigSet(config interface{}) error {
 	c, ok := config.(*BuildConfig)
 	if !ok {
 		return fmt.Errorf("Expected type BuildConfig")
