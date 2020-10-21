@@ -8,7 +8,7 @@ import (
 )
 
 type BuildConfig struct {
-	Directory string "hcl:directory,optional"
+	Directory string `hcl:"directory,optional"`
 }
 
 type Builder struct {
@@ -16,8 +16,8 @@ type Builder struct {
 }
 
 // Implement Configurable
-func (b *Builder) Config() interface{} {
-	return &b.config
+func (b *Builder) Config() (interface{}, error) {
+	return &b.config, nil
 }
 
 // Implement ConfigurableNotify
