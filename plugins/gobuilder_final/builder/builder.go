@@ -20,8 +20,8 @@ type Builder struct {
 }
 
 // Implement Configurable
-func (b *Builder) Config() interface{} {
-	return &b.config
+func (b *Builder) Config() (interface{}, error) {
+	return &b.config, nil
 }
 
 // Implement ConfigurableNotify
