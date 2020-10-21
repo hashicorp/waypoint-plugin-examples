@@ -1,0 +1,69 @@
+name: Build and Release Waypoint Plugin
+
+on: [ push, pull_request ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Plugin
+      run: make build-docker
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: plugin-binaries
+        path: releases
+
+  create_release:
+    
+    if: contains(github.ref, 'v')
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+
+  upload_assets:
+
+    if: contains(github.ref, 'v')
+    runs-on: ubuntu-latest
+    needs: create_release
+
+    strategy:
+      matrix:
+        os: [darwin_amd64, linux_amd64, windows_386, windows_amd64]
+  
+    steps:
+    
+    - name: Download built plugin binaries
+      uses: actions/download-artifact@v2
+      with:
+        name: plugin-binaries
+
+    - name: Upload Release Asset ${{ matrix.os }}
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ needs.create_release.outputs.upload_url }} 
+        asset_path: ./waypoint-plugin-template_${{ matrix.os }}.zip
+        asset_name: waypoint-plugin-template_${{ matrix.os }}.zip
+        asset_content_type: application/zip
