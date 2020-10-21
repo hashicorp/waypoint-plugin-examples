@@ -25,6 +25,7 @@ for arg in "$@"
 do
     if [ "$arg" == "--help" ] || [ "$arg" == "-h" ]; then
       help
+      exit 0
     fi
 done
 
