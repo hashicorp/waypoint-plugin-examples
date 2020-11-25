@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package release;
 
-option go_package = "github.com/hashicorp/waypoint-plugin-examples/filepath/release";
+option go_package = "github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/release";
 
 message Release {
   string url = 1;
