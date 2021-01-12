@@ -21,10 +21,10 @@ make
 
 ```shell
 Build Protos
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./builder/output.proto
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./registry/output.proto
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./platform/output.proto
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./release/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./builder/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./registry/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./platform/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./release/output.proto
 
 Compile Plugin
 # Clear the output

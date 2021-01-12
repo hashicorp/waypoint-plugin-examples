@@ -32,7 +32,7 @@ make -C gobuilder_final
 make[1]: Entering directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final'
 
 Build Protos
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./builder/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./builder/output.proto
 
 Compile Plugin
 go build -o ./bin/waypoint-plugin-gobuilder ./main.go 
@@ -42,9 +42,9 @@ make[1]: Leaving directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plug
 ### Build Filepath Builder Plugin
 make -C filepath
 make[1]: Entering directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/plugins/filepath'
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./registry/output.proto
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./platform/output.proto
-protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./release/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./registry/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./platform/output.proto
+protoc -I . --go-grpc_out=. --go-grpc_opt=paths=source_relative ./release/output.proto
 make[1]: Leaving directory '/home/nicj/go/src/github.com/hashicorp/waypoint-plugin-examples/plugins/filepath'
 
 

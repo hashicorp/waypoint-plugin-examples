@@ -8,9 +8,9 @@ import (
 	sdk "github.com/hashicorp/waypoint-plugin-sdk"
 )
 
-//go:generate protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./registry/plugin.proto
-//go:generate protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./deploy/plugin.proto
-//go:generate protoc -I . --go_opt=plugins=grpc --go_out=../../../../ ./release/plugin.proto
+//go:generate protoc -I . --go-grpc_out=../../../../ ./registry/plugin.proto
+//go:generate protoc -I . --go-grpc_out=../../../../ ./deploy/plugin.proto
+//go:generate protoc -I . --go-grpc_out=../../../../ ./release/plugin.proto
 
 func main() {
 	sdk.Main(sdk.WithComponents(
