@@ -3,13 +3,17 @@ package release
 import (
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/platform"
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/utils"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
+	sdk "github.com/hashicorp/waypoint-plugin-sdk/proto/gen"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 type ReleaseConfig struct {
@@ -30,6 +34,10 @@ func (r *Releaser) ReleaseFunc() interface{} {
 
 func (r *Releaser) DestroyFunc() interface{} {
 	return r.destroy
+}
+
+func (r *Releaser) StatusFunc() interface{} {
+	return r.status
 }
 
 func (r *Releaser) release(
@@ -58,6 +66,30 @@ func (r *Releaser) destroy(
 ) error {
 	// TODO(briancain): write me
 	return nil
+}
+
+func (r *Releaser) status(
+	ctx context.Context,
+	ji *component.JobInfo,
+	release *Release,
+	ui terminal.UI,
+) (*sdk.StatusReport, error) {
+	sg := ui.StepGroup()
+	s := sg.Add("Checking the status of the file...")
+
+	report := &sdk.StatusReport{}
+	if _, err := os.Stat(release.Url); err == nil {
+		s.Update("Symlink exists!")
+		report.Health = sdk.StatusReport_READY
+	} else {
+		st := ui.Status()
+		defer st.Close()
+		st.Step(terminal.StatusError, "Symlink to File is missing!")
+		report.Health = sdk.StatusReport_MISSING
+	}
+	s.Done()
+
+	return report, nil
 }
 
 // ensure Releaser implements component.Release
