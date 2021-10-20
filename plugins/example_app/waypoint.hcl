@@ -1,4 +1,4 @@
-project = "guides"
+project = "custom-waypoint-plugins"
 
 app "example" {
 

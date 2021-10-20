@@ -21,9 +21,6 @@ func (p *Platform) DestroyFunc() interface{} {
 // - *component.Source
 // - *component.JobInfo
 // - *component.DeploymentConfig
-// - *datadir.Project
-// - *datadir.App
-// - *datadir.Component
 // - hclog.Logger
 // - terminal.UI
 // - *component.LabelSet
@@ -39,5 +36,6 @@ func (p *Platform) DestroyFunc() interface{} {
 // If an error is returned, Waypoint stops the execution flow and
 // returns an error to the user.
 func (p *Platform) destroy(ctx context.Context, ui terminal.UI, deployment *Deployment) error {
+	// TODO(briancain): write me
 	return nil
 }

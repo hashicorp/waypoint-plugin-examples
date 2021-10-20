@@ -7,6 +7,8 @@ import (
 	"os/exec"
 	"path"
 
+	"github.com/hashicorp/go-hclog"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -57,9 +59,6 @@ func (b *Builder) BuildFunc() interface{} {
 // - *component.Source
 // - *component.JobInfo
 // - *component.DeploymentConfig
-// - *datadir.Project
-// - *datadir.App
-// - *datadir.Component
 // - hclog.Logger
 // - terminal.UI
 // - *component.LabelSet
@@ -70,7 +69,12 @@ func (b *Builder) BuildFunc() interface{} {
 // as an input parameter.
 // If an error is returned, Waypoint stops the execution flow and
 // returns an error to the user.
-func (b *Builder) build(ctx context.Context, ui terminal.UI) (*Binary, error) {
+func (b *Builder) build(
+	ctx context.Context,
+	ui terminal.UI,
+	src *component.Source,
+	log hclog.Logger,
+) (*Binary, error) {
 	u := ui.Status()
 	defer u.Close()
 	u.Update("Building application")

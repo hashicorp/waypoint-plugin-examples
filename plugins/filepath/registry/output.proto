@@ -7,3 +7,9 @@ option go_package = "github.com/hashicorp/waypoint-plugin-examples/plugins/filep
 message Artifact {
   string path = 1;
 }
+
+message AccessInfo {
+  string image = 1;
+  string tag = 2;
+}
+

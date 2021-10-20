@@ -33,22 +33,6 @@ func (d *Deploy) DestroyFunc() interface{} {
 	return d.destroy
 }
 
-/*
-func (s *Deploy) LogsFunc() interface{} {
-	// setup tailing the logs files
-	return s
-}
-
-func (s *Deploy) NextLogBatch(ctx context.Context) ([]component.LogEvent, error) {
-
-	return []component.LogEvent{{Message: "ok"}}, nil
-}
-*/
-
-//func (d *Deploy) DefaultReleaserFunc() interface{} {
-//	return func() *Deploy { return &release.Releaser{} }
-//}
-
 func (d *Deploy) deploy(
 	ctx context.Context,
 	ji *component.JobInfo,
@@ -59,11 +43,6 @@ func (d *Deploy) deploy(
 	st := ui.Status()
 	defer st.Close()
 	st.Update(fmt.Sprintf("Deploying version %s", ji.Id))
-
-	//deps, err := hc.Deployments(ctx, &history.Lookup{FilterStatus: history.StatusSuccess})
-	//if err != nil {
-	//	return nil, status.Errorf(codes.Internal, "Unable to query deployment history: %s", err)
-	//}
 
 	// get the current deployment number
 	deployCount := utils.DeploymentCount(d.config.Directory)

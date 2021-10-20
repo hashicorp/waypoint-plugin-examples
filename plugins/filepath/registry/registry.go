@@ -6,6 +6,7 @@ import (
 
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/utils"
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final/builder"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -26,6 +27,15 @@ func (r *Registry) Config() (interface{}, error) {
 
 func (r *Registry) PushFunc() interface{} {
 	return r.push
+}
+
+// Implement Registry
+func (r *Registry) AccessInfoFunc() interface{} {
+	return r.accessInfo
+}
+
+func (r *Registry) accessInfo() (*AccessInfo, error) {
+	return &AccessInfo{}, nil
 }
 
 func (r *Registry) push(
@@ -51,3 +61,7 @@ func (r *Registry) push(
 	st.Step(terminal.StatusOK, fmt.Sprintf("Application binary pushed to registry"))
 	return &Artifact{Path: path}, nil
 }
+
+// Go checks to ensure this class properly implements the Registry component
+var _ component.Registry = (*Registry)(nil)
+var _ component.RegistryAccess = (*Registry)(nil)

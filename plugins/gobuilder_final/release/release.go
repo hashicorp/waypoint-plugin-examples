@@ -50,9 +50,6 @@ func (rm *ReleaseManager) ReleaseFunc() interface{} {
 // - *component.Source
 // - *component.JobInfo
 // - *component.DeploymentConfig
-// - *datadir.Project
-// - *datadir.App
-// - *datadir.Component
 // - hclog.Logger
 // - terminal.UI
 // - *component.LabelSet

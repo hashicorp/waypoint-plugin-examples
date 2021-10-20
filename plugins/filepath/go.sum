@@ -94,6 +94,8 @@ github.com/hashicorp/hcl/v2 v2.6.0 h1:3krZOfGY6SziUXa6H9PJU6TyohHn7I+ARYnhbeNBz+
 github.com/hashicorp/hcl/v2 v2.6.0/go.mod h1:bQTN5mpo+jewjJgh8jr0JUguIi7qPHUF6yIfAEN3jqY=
 github.com/hashicorp/waypoint-plugin-sdk v0.0.0-20211012192505-5c78341a47e4 h1:J5m1ZI3ica5hNoRa9yoVkxuCW+metymq6qHWLBb0O0A=
 github.com/hashicorp/waypoint-plugin-sdk v0.0.0-20211012192505-5c78341a47e4/go.mod h1:pJSjBDgumtkMumNuLh4wDYiRk/acWo5tzyUEFCC4ugQ=
+github.com/hashicorp/waypoint-plugin-sdk v0.0.0-20211014201256-80d5426fa6e4 h1:buBXFdQRVs5WEr2ePxrSGoz+wmbnMQ6u+X2nLN+HmYc=
+github.com/hashicorp/waypoint-plugin-sdk v0.0.0-20211014201256-80d5426fa6e4/go.mod h1:pJSjBDgumtkMumNuLh4wDYiRk/acWo5tzyUEFCC4ugQ=
 github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb h1:b5rjCoWHc7eqmAS4/qyk21ZsHyb6Mxv/jykxvNTkU4M=
 github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
 github.com/iancoleman/strcase v0.1.2 h1:gnomlvw9tnV3ITTAxzKSgTF+8kFWcU/f+TgttpXGz1U=

@@ -4,7 +4,9 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final/builder"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -44,6 +46,15 @@ func (r *Registry) PushFunc() interface{} {
 	return r.push
 }
 
+// Implement Registry
+func (r *Registry) AccessInfoFunc() interface{} {
+	return r.accessInfo
+}
+
+func (r *Registry) accessInfo() (*AccessInfo, error) {
+	return &AccessInfo{}, nil
+}
+
 // A PushFunc does not have a strict signature, you can define the parameters
 // you need based on the Available parameters that the Waypoint SDK provides.
 // Waypoint will automatically inject parameters as specified
@@ -54,9 +65,6 @@ func (r *Registry) PushFunc() interface{} {
 // - *component.Source
 // - *component.JobInfo
 // - *component.DeploymentConfig
-// - *datadir.Project
-// - *datadir.App
-// - *datadir.Component
 // - hclog.Logger
 // - terminal.UI
 // - *component.LabelSet
@@ -70,7 +78,12 @@ func (r *Registry) PushFunc() interface{} {
 // as an input parameter.
 // If an error is returned, Waypoint stops the execution flow and
 // returns an error to the user.
-func (r *Registry) push(ctx context.Context, ui terminal.UI, binary *builder.Binary) (*Artifact, error) {
+func (r *Registry) push(
+	ctx context.Context,
+	ui terminal.UI,
+	log hclog.Logger,
+	binary *builder.Binary,
+) (*Artifact, error) {
 	u := ui.Status()
 	defer u.Close()
 	u.Update("Pushing binary to registry")
@@ -78,4 +91,6 @@ func (r *Registry) push(ctx context.Context, ui terminal.UI, binary *builder.Bin
 	return &Artifact{}, nil
 }
 
-// Implement Authenticator
+// Go checks to ensure this class properly implements the Registry component
+var _ component.Registry = (*Registry)(nil)
+var _ component.RegistryAccess = (*Registry)(nil)
