@@ -5,6 +5,8 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/waypoint-plugin-examples/template/registry"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
+	sdk "github.com/hashicorp/waypoint-plugin-sdk/proto/gen"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -40,6 +42,10 @@ func (rm *ReleaseManager) ReleaseFunc() interface{} {
 	return rm.release
 }
 
+func (rm *ReleaseManager) StatusFunc() interface{} {
+	return rm.status
+}
+
 // A BuildFunc does not have a strict signature, you can define the parameters
 // you need based on the Available parameters that the Waypoint SDK provides.
 // Waypoint will automatically inject parameters as specified
@@ -70,4 +76,21 @@ func (rm *ReleaseManager) release(ctx context.Context, ui terminal.UI, artifact 
 	u.Update("Release application")
 
 	return &Release{}, nil
+}
+
+func (rm *ReleaseManager) status(
+	ctx context.Context,
+	ji *component.JobInfo,
+	ui terminal.UI,
+	artifact *registry.Artifact,
+) (*sdk.StatusReport, error) {
+	sg := ui.StepGroup()
+	s := sg.Add("Checking the status of the file...")
+
+	report := &sdk.StatusReport{}
+	s.Update("Release is not implemented")
+	report.Health = sdk.StatusReport_UNKNOWN
+	s.Done()
+
+	return report, nil
 }
