@@ -38,8 +38,10 @@ func (p *Deploy) authenticate(
 	log hclog.Logger,
 	ui terminal.UI,
 ) (*component.AuthResult, error) {
+	s := ui.Status()
+	defer s.Close()
 
-	ui.Output("Describe the manual authentication steps here")
+	s.Update("Describe the manual authentication steps here")
 
 	return &component.AuthResult{Authenticated: true}, nil
 }

@@ -56,6 +56,7 @@ func (r *Releaser) release(
 func (r *Releaser) destroy(
 	ctx context.Context,
 ) error {
+	// TODO(briancain): write me
 	return nil
 }
 
