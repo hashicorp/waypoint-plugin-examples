@@ -111,18 +111,24 @@ And then:
 waypoint init
 waypoint up
 
-» Building...
-✓ Application built successfully server
+» Building example...
+✓ Application built successfully
 ✓ Application binary pushed to registry
 
-» Deploying...
+» Deploying example...
+✓ Created deployment deployments/app.1.deployment
 
-» Releasing...
+✓ File is ready!
+
+» Releasing example...
 ✓ Created release deployments/release
+
+✓ Symlink to File is ready!
 
 The deploy was successful! A Waypoint deployment URL is shown below. This
 can be used internally to check your deployment and is not meant for external
 traffic. You can manage this hostname using "waypoint hostname."
 
    Release URL: deployments/release
+Deployment URL: https://seemingly-settled-weevil--v20.waypoint.run
 ```
