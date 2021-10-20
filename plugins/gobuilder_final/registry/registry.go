@@ -46,6 +46,7 @@ func (r *Registry) PushFunc() interface{} {
 	return r.push
 }
 
+// Implement Registry
 func (r *Registry) AccessInfoFunc() interface{} {
 	return r.accessInfo
 }
@@ -90,7 +91,6 @@ func (r *Registry) push(
 	return &Artifact{}, nil
 }
 
-// Implement Authenticator
-
+// Go checks to ensure this class properly implements the Registry component
 var _ component.Registry = (*Registry)(nil)
 var _ component.RegistryAccess = (*Registry)(nil)
