@@ -57,8 +57,8 @@ cp ./filepath/bin/* ./example_app/.waypoint/plugins
 The ./plugins/example_app folder has a simple Golang application and the following Waypoint file
 
 
-```javascript
-project = "guides"
+```hcl
+project = "custom-waypoint-plugin"
 
 app "example" {
 
