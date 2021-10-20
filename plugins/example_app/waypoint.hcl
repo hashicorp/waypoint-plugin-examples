@@ -4,7 +4,7 @@ app "example" {
 
   build {
     use "gobuilder" {
-      output_name = "server"
+      output_name = "app"
       source = "./"
     }
 

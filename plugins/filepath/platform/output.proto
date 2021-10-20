@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package platform;
 
-option go_package = "github.com/hashicorp/waypoint-plugin-examples/filepath/platform";
+option go_package = "github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/platform";
 
 message Deployment {
   string path = 1;
