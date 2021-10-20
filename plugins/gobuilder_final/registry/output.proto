@@ -8,3 +8,8 @@ option go_package = "github.com/hashicorp/waypoint-plugin-examples/plugins/gobui
 message Artifact {
   string source = 1;
 }
+
+message AccessInfo {
+  string image = 1;
+  string tag = 2;
+}
