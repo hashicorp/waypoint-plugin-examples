@@ -6,6 +6,7 @@ import (
 
 	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final/builder"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -90,3 +91,6 @@ func (r *Registry) push(
 }
 
 // Implement Authenticator
+
+var _ component.Registry = (*Registry)(nil)
+var _ component.RegistryAccess = (*Registry)(nil)
