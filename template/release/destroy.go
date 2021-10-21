@@ -21,9 +21,6 @@ func (rm *ReleaseManager) DestroyFunc() interface{} {
 // - *component.Source
 // - *component.JobInfo
 // - *component.DeploymentConfig
-// - *datadir.Project
-// - *datadir.App
-// - *datadir.Component
 // - hclog.Logger
 // - terminal.UI
 // - *component.LabelSet
