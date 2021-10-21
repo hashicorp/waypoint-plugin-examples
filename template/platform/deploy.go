@@ -131,7 +131,7 @@ func (b *Platform) deploy(
 	// they will not be invoked during CreateAll()
 	if err := rm.CreateAll(
 		ctx, log, u, ui,
-		&result,
+		artifact, &result,
 	); err != nil {
 		return nil, err
 	}
@@ -188,6 +188,7 @@ func (d *Platform) status(
 func (b *Platform) resourceDeploymentCreate(
 	ctx context.Context,
 	log hclog.Logger,
+	st terminal.Status,
 	ui terminal.UI,
 	artifact *registry.Artifact,
 	result *Deployment,
@@ -200,6 +201,7 @@ func (b *Platform) resourceDeploymentCreate(
 func (b *Platform) resourceDeploymentStatus(
 	ctx context.Context,
 	ui terminal.UI,
+	sg terminal.StepGroup,
 	artifact *registry.Artifact,
 ) error {
 	// Determine health status of "this" resource.
