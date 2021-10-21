@@ -87,7 +87,7 @@ func (d *Platform) status(
 	ui terminal.UI,
 ) (*sdk.StatusReport, error) {
 	sg := ui.StepGroup()
-	s := sg.Add("Checking the status of the file...")
+	s := sg.Add("Checking the status of the deployment...")
 
 	report := &sdk.StatusReport{}
 	s.Update("Deployment is currently not implemented!")
