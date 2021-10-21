@@ -34,7 +34,7 @@ func (rm *ReleaseManager) ConfigSet(config interface{}) error {
 	return nil
 }
 
-// Implement Builder
+// Implement ReleaseManager
 func (rm *ReleaseManager) ReleaseFunc() interface{} {
 	// return a function which will be called by Waypoint
 	return rm.release

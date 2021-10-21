@@ -5,6 +5,8 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final/registry"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
+	sdk "github.com/hashicorp/waypoint-plugin-sdk/proto/gen"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -37,10 +39,15 @@ func (p *Platform) ConfigSet(config interface{}) error {
 	return nil
 }
 
-// Implement Builder
+// Implement Platform
 func (p *Platform) DeployFunc() interface{} {
 	// return a function which will be called by Waypoint
 	return p.deploy
+}
+
+// Implement Platform
+func (p *Platform) StatusFunc() interface{} {
+	return p.status
 }
 
 // A BuildFunc does not have a strict signature, you can define the parameters
@@ -72,4 +79,22 @@ func (b *Platform) deploy(ctx context.Context, ui terminal.UI, artifact *registr
 	u.Update("Deploy application")
 
 	return &Deployment{}, nil
+}
+
+func (b *Platform) status(
+	ctx context.Context,
+	ji *component.JobInfo,
+	deploy *Deployment,
+	ui terminal.UI,
+) (*sdk.StatusReport, error) {
+	sg := ui.StepGroup()
+	s := sg.Add("Checking the status of the file...")
+
+	report := &sdk.StatusReport{}
+	// Check status of deployment
+	report.Health = sdk.StatusReport_UNKNOWN
+	s.Update("Deployment is unknown!")
+	s.Done()
+
+	return report, nil
 }

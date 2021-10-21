@@ -9,6 +9,7 @@ import (
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/registry"
 	"github.com/hashicorp/waypoint-plugin-examples/plugins/filepath/utils"
 	"github.com/hashicorp/waypoint-plugin-sdk/component"
+	sdk "github.com/hashicorp/waypoint-plugin-sdk/proto/gen"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -31,6 +32,10 @@ func (d *Deploy) DeployFunc() interface{} {
 
 func (d *Deploy) DestroyFunc() interface{} {
 	return d.destroy
+}
+
+func (d *Deploy) StatusFunc() interface{} {
+	return d.status
 }
 
 func (d *Deploy) deploy(
@@ -82,4 +87,30 @@ func (d *Deploy) destroy(
 
 	st.Step(terminal.StatusOK, fmt.Sprintf("Removed deployments %s", d.config.Directory))
 	return nil
+}
+
+func (d *Deploy) status(
+	ctx context.Context,
+	ji *component.JobInfo,
+	deploy *Deployment,
+	ui terminal.UI,
+) (*sdk.StatusReport, error) {
+	sg := ui.StepGroup()
+	s := sg.Add("Checking the status of the file...")
+
+	report := &sdk.StatusReport{}
+	if _, err := os.Stat(deploy.Path); err == nil {
+		s.Update("File is ready!")
+		report.Health = sdk.StatusReport_READY
+	} else {
+		st := ui.Status()
+		defer st.Close()
+		st.Step(terminal.StatusError, "File is missing!")
+		s.Status(terminal.StatusError)
+
+		report.Health = sdk.StatusReport_MISSING
+	}
+	s.Done()
+
+	return report, nil
 }

@@ -5,6 +5,8 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/waypoint-plugin-examples/template/registry"
+	"github.com/hashicorp/waypoint-plugin-sdk/component"
+	sdk "github.com/hashicorp/waypoint-plugin-sdk/proto/gen"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -43,6 +45,10 @@ func (p *Platform) DeployFunc() interface{} {
 	return p.deploy
 }
 
+func (p *Platform) StatusFunc() interface{} {
+	return p.status
+}
+
 // A BuildFunc does not have a strict signature, you can define the parameters
 // you need based on the Available parameters that the Waypoint SDK provides.
 // Waypoint will automatically inject parameters as specified
@@ -72,4 +78,21 @@ func (b *Platform) deploy(ctx context.Context, ui terminal.UI, artifact *registr
 	u.Update("Deploy application")
 
 	return &Deployment{}, nil
+}
+
+func (d *Platform) status(
+	ctx context.Context,
+	ji *component.JobInfo,
+	deploy *Deployment,
+	ui terminal.UI,
+) (*sdk.StatusReport, error) {
+	sg := ui.StepGroup()
+	s := sg.Add("Checking the status of the deployment...")
+
+	report := &sdk.StatusReport{}
+	s.Update("Deployment is currently not implemented!")
+	s.Done()
+	report.Health = sdk.StatusReport_UNKNOWN
+
+	return report, nil
 }
