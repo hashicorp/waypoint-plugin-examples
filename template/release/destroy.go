@@ -3,6 +3,8 @@ package release
 import (
 	"context"
 
+	"github.com/hashicorp/go-hclog"
+	"github.com/hashicorp/waypoint-plugin-examples/template/registry"
 	"github.com/hashicorp/waypoint-plugin-sdk/terminal"
 )
 
@@ -35,6 +37,43 @@ func (rm *ReleaseManager) DestroyFunc() interface{} {
 //
 // If an error is returned, Waypoint stops the execution flow and
 // returns an error to the user.
-func (rm *ReleaseManager) destroy(ctx context.Context, ui terminal.UI, release *Release) error {
+func (rm *ReleaseManager) destroy(
+	ctx context.Context,
+	log hclog.Logger,
+	ui terminal.UI,
+	release *Release,
+) error {
+	sg := ui.StepGroup()
+	defer sg.Wait()
+
+	r := rm.resourceManager(log, nil)
+
+	// If we don't have resource state, this state is from an older version
+	// and we need to manually recreate it.
+	if release.ResourceState == nil {
+		r.Resource("release").SetState(&Resource_Release{
+			Name: release.Name,
+		})
+	} else {
+		// Load our set state
+		if err := r.LoadState(release.ResourceState); err != nil {
+			return err
+		}
+	}
+
+	// Destroy
+	return r.DestroyAll(ctx, log, sg, ui)
+}
+
+func (rm *ReleaseManager) resourceReleaseDestroy(
+	ctx context.Context,
+	log hclog.Logger,
+	st terminal.Status,
+	ui terminal.UI,
+	artifact *registry.Artifact,
+	result *Release,
+) error {
+	// Create your deployment resource here!
+
 	return nil
 }
