@@ -16,8 +16,8 @@ protos:
 
 	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./builder/output.proto
 	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./registry/output.proto
-	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./platform/output.proto
-	protoc -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./release/output.proto
+	protoc -I thirdparty/proto -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./platform/output.proto
+	protoc -I thirdparty/proto -I . --go_out=plugins=grpc:. --go_opt=paths=source_relative ./release/output.proto
 
 # Builds the plugin on your local machine
 build:
