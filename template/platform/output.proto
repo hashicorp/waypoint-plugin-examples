@@ -5,14 +5,14 @@ package platform;
 
 option go_package = "github.com/hashicorp/waypoint-plugin-examples/template/platform";
 
-import "google/protobuf/any.proto";
+import "opaqueany/any.proto";
 
 // You can customise this message to change the fields for
 // the output value from your Deployment
 message Deployment {
   string id = 1;
   string name = 2;
-  google.protobuf.Any resource_state = 3;
+  opaqueany.Any resource_state = 3;
 }
 
 // An example proto message for a deployment resource. When you make your own

@@ -3,8 +3,11 @@ module github.com/hashicorp/waypoint-plugin-examples/template
 go 1.17
 
 require (
-	github.com/hashicorp/waypoint-plugin-sdk v0.0.0-20211012192505-5c78341a47e4
-	google.golang.org/protobuf v1.26.0
+	github.com/hashicorp/go-hclog v0.14.1
+	github.com/hashicorp/opaqueany v0.0.0-20220321170339-a5c6ff5bb0ec
+	github.com/hashicorp/waypoint-plugin-sdk v0.0.0-20220502215818-69a3eeb201d8
+	google.golang.org/grpc v1.33.1
+	google.golang.org/protobuf v1.27.1
 )
 
 require (
@@ -24,10 +27,10 @@ require (
 	github.com/gookit/color v1.3.1 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-argmapper v0.2.3 // indirect
-	github.com/hashicorp/go-hclog v0.14.1 // indirect
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
 	github.com/hashicorp/go-plugin v1.4.2 // indirect
 	github.com/hashicorp/hcl/v2 v2.6.0 // indirect
+	github.com/hashicorp/protostructure v0.0.0-20220321173139-813f7b927cb7 // indirect
 	github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb // indirect
 	github.com/iancoleman/strcase v0.1.2 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
@@ -40,7 +43,6 @@ require (
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/mitchellh/mapstructure v1.3.3 // indirect
-	github.com/mitchellh/protostructure v0.0.0-20200814180458-3cfccdb015ce // indirect
 	github.com/morikuni/aec v1.0.0 // indirect
 	github.com/oklog/run v1.0.0 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
@@ -57,7 +59,6 @@ require (
 	golang.org/x/sys v0.0.0-20200916030750-2334cc1a136f // indirect
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/genproto v0.0.0-20201022181438-0ff5f38871d5 // indirect
-	google.golang.org/grpc v1.33.1 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
 
