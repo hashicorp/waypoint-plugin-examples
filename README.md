@@ -132,3 +132,19 @@ traffic. You can manage this hostname using "waypoint hostname."
    Release URL: deployments/release
 Deployment URL: https://seemingly-settled-weevil--v20.waypoint.run
 ```
+
+## Community Built Plugins
+
+Here are a list of plugins which have been created by folks within the Waypoint
+community.
+
+ - [swisscom/waypoint-plugin-cloudfoundry](https://github.com/swisscom/waypoint-plugin-cloudfoundry) - Plugin for Waypoint that adds support to deploy artifacts on Cloud Foundry.
+
+### Adding a plugin
+
+If you are creating a plugin and would like to be featured on this list please
+submit a PR and add your plugin to the list above using the following format.
+
+```markdown
+- [organization/Plugin Name](url to plugin repository) - Brief description of plugin
+```
