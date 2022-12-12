@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 FROM golang:1.17-alpine3.15 as build
 
 # Install the Protocol Buffers compiler and Go plugin
