@@ -139,6 +139,7 @@ Here are a list of plugins which have been created by folks within the Waypoint
 community.
 
  - [swisscom/waypoint-plugin-cloudfoundry](https://github.com/swisscom/waypoint-plugin-cloudfoundry) - Plugin for Waypoint that adds support to deploy artifacts on Cloud Foundry.
+ - [scaleway/waypoint-plugin-scaleway](https://github.com/scaleway/waypoint-plugin-scaleway) - Plugin for Waypoint that adds support to deploy [containers](https://www.scaleway.com/en/serverless-containers/).
 
 ### Adding a plugin
 
