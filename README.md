@@ -140,6 +140,7 @@ community.
 
  - [swisscom/waypoint-plugin-cloudfoundry](https://github.com/swisscom/waypoint-plugin-cloudfoundry) - Plugin for Waypoint that adds support to deploy artifacts on Cloud Foundry.
  - [scaleway/waypoint-plugin-scaleway](https://github.com/scaleway/waypoint-plugin-scaleway) - Plugin for Waypoint that adds support to deploy [containers](https://www.scaleway.com/en/serverless-containers/).
+ - [seaplane-io/waypoint-plugin-seaplane](https://github.com/seaplane-io/waypoint-plugin-seaplane) - Plugin to use [Seaplane](https://www.seaplane.io) compute services with Waypoint.
 
 ### Adding a plugin
 
