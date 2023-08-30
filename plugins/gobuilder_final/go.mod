@@ -3,6 +3,7 @@ module github.com/hashicorp/waypoint-plugin-examples/plugins/gobuilder_final
 go 1.17
 
 require (
+	github.com/hashicorp/go-hclog v0.14.1
 	github.com/hashicorp/waypoint-plugin-sdk v0.0.0-20211014201256-80d5426fa6e4
 	google.golang.org/protobuf v1.26.0
 )
@@ -24,7 +25,6 @@ require (
 	github.com/gookit/color v1.3.1 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-argmapper v0.2.3 // indirect
-	github.com/hashicorp/go-hclog v0.14.1 // indirect
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
 	github.com/hashicorp/go-plugin v1.4.2 // indirect
 	github.com/hashicorp/hcl/v2 v2.6.0 // indirect
@@ -58,5 +58,5 @@ require (
 	golang.org/x/text v0.3.2 // indirect
 	google.golang.org/genproto v0.0.0-20201022181438-0ff5f38871d5 // indirect
 	google.golang.org/grpc v1.33.1 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
+	gopkg.in/yaml.v3 v3.0.0 // indirect
 )
